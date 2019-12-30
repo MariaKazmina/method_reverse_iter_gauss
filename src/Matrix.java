@@ -25,6 +25,47 @@ public class Matrix {
         }
     }
 
+    public double[][] multiplayMatrix(Matrix K)
+    {
+
+
+        double[][] result = new double[N][N];
+
+        if (N == K.N) {
+            for (int i = 0; i <N; i++) {
+                for (int j = 0; j < N; j++) {
+                    double step = 0;
+                    for (int k = 0; k < N; k++)
+                        step += A[i][k] * K.A[k][j];
+                    result[i][j] = step;
+                }
+
+            }
+        }
+
+
+        A = result;
+        return result;
+
+
+    }
+
+    public Matrix transposeMatrix() {    //транспонирование матрицы
+
+        Matrix K = new Matrix(N);
+        for (int i = 0; i < N; i++)  //идем по строке
+        {
+            for (int j = 0; j < N; j++) {
+                K.A[j][i] = A[i][j];
+            }
+        }
+
+        return K;
+
+    }
+
+    }
+
 
 
 
