@@ -2,6 +2,14 @@ public class Matrix {
     private double[][] A;
     private int N;
 
+    public double[][] getA() {
+        return A;
+    }
+
+    public int getN() {
+        return N;
+    }
+
     Matrix(int n) {
         A = new double[N][N];
         N = n;
@@ -62,6 +70,26 @@ public class Matrix {
 
         return K;
 
+    }
+
+    public Vec multiplyOnVec(Vec k) {  //работает( вроде как)
+        Vec res = new Vec(N);
+        double[] r = new double[N];
+        double[] ke = k.getVec();
+
+        if (N == k.getN()) {
+
+            for (int i = 0; i < N; ++i) {
+                double step = 0;
+                for (int j = 0; j < N; j++) {
+                    step += A[i][j] * ke[j];
+                }
+                r[i] = step;
+            }
+        }
+        res.setVec(r);
+
+        return res;
     }
 
     }
