@@ -28,19 +28,16 @@ public class Matrix {
     public void showMatrix() {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++)
-               System.out.print(A[i][j]);
+                System.out.print(A[i][j]);
             System.out.println(" ");
         }
     }
 
-    public double[][] multiplayMatrix(Matrix K)
-    {
-
-
+    public double[][] multiplyMatrix(Matrix K) {
         double[][] result = new double[N][N];
 
         if (N == K.N) {
-            for (int i = 0; i <N; i++) {
+            for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
                     double step = 0;
                     for (int k = 0; k < N; k++)
@@ -92,7 +89,21 @@ public class Matrix {
         return res;
     }
 
+    public void buildDiagonal(Vec a) {
+        double[] vec = a.getVec();
+        int k = 0;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (i == j) {
+                    A[i][j] = vec[k];
+                    k++;
+                }
+            }
+        }
     }
+
+
+}
 
 
 
